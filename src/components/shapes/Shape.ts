@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-import { VectorUtils } from './VectorUtils';
+import { VectorUtils } from '../../utils/VectorUtils';
 
 /**
  * Contains thet shape information such as position and shape vertices for 2d
@@ -20,12 +20,22 @@ export class Shape {
 
     private mesh2D: THREE.Mesh = null;
 
-    constructor() {
-
+    constructor(points: Array<ArrayLike<number>>) {
+        try {
+            this.points = VectorUtils.convertArrayToVec3s(points);
+        } catch (e) {
+            throw e;
+        }
     }
 
-    private create2D(): void {
-        if(this.points){
+    /**
+     * Creates the shape2d mesh and returns it.
+     * 
+     * @private
+     * @memberof Shape
+     */
+    private create2D(): THREE.Mesh {
+        if (this.points) {
             const vec2s: THREE.Vector2[] = VectorUtils.convertVec3sToVec2s(this.points);
             const shape: THREE.Shape = new THREE.Shape(vec2s);
             const shapeGeo: THREE.ShapeGeometry = new THREE.ShapeGeometry(shape);
@@ -33,6 +43,7 @@ export class Shape {
         } else {
             throw new Error('<< Shape >> mesh2D is null');
         }
+        return this.mesh2D;
     }
 
 

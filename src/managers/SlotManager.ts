@@ -1,4 +1,4 @@
-import { Slot } from "./Slot";
+import { Slot } from '../components/Slot';
 
 export class SlotManager {
 

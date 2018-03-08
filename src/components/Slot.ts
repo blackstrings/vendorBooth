@@ -1,4 +1,4 @@
-import { Shape } from './Shape';
+import { Shape } from './shapes/Shape';
 import { Vendor } from './Vendor';
 
 export class Slot {
