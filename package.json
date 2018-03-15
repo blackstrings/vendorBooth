@@ -17,6 +17,7 @@
     "three": "^0.90.0"
   },
   "devDependencies": {
+    "@types/es6-collections": "^0.5.31",
     "@types/three": "^0.89.11"
   }
 }
